@@ -1,0 +1,14 @@
+{
+  "name": "kiss",
+  "version": "1.0.0",
+  "description": "异地情侣互传早安晚安吻",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.0.0",
+    "express": "^4.21.0"
+  }
+}

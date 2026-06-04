@@ -1,0 +1,271 @@
+/* ====== Reset & Base ====== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans SC', sans-serif;
+  background: #fef6f6;
+  color: #3d2c2c;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* ====== Screens ====== */
+.screen {
+  display: none;
+  width: 100%;
+  max-width: 480px;
+  min-height: 100vh;
+  padding: 0 20px;
+}
+.screen.active { display: block; }
+
+/* ====== Login Screen ====== */
+#login-screen {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+#login-screen.active { display: flex; }
+.login-box {
+  text-align: center;
+  padding: 40px 24px;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  width: 100%;
+  max-width: 360px;
+}
+.login-emoji { font-size: 64px; margin-bottom: 8px; }
+.login-box h1 {
+  font-size: 32px; font-weight: 700;
+  color: #e2556d; letter-spacing: 2px; margin-bottom: 4px;
+}
+.login-subtitle { color: #b08888; font-size: 15px; margin-bottom: 32px; }
+.login-buttons { display: flex; gap: 12px; margin-bottom: 24px; }
+.btn-partner {
+  flex: 1; padding: 20px 12px;
+  border: 2px solid #f0e0e0; border-radius: 16px;
+  background: #fff; cursor: pointer;
+  transition: all 0.2s;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.btn-partner:hover { border-color: #e2556d; background: #fff5f5; transform: translateY(-2px); }
+.btn-partner:active { transform: translateY(0); }
+.partner-icon { font-size: 36px; }
+.partner-label { font-size: 18px; font-weight: 600; color: #3d2c2c; }
+.partner-role { font-size: 12px; color: #b08888; }
+.login-hint { font-size: 13px; color: #c4a0a0; }
+
+/* ====== Header ====== */
+header { display: flex; justify-content: space-between; align-items: center; padding: 20px 0 12px; }
+.header-left { display: flex; align-items: baseline; gap: 4px; }
+.display-name { font-size: 24px; font-weight: 700; color: #e2556d; }
+.header-subtitle { font-size: 16px; color: #b08888; }
+.btn-icon { background: none; border: none; color: #c4a0a0; cursor: pointer; padding: 8px; border-radius: 50%; transition: all 0.2s; }
+.btn-icon:hover { background: #f0e0e0; color: #e2556d; }
+
+/* ====== Today Banner ====== */
+.today-banner { text-align: center; padding: 8px 0 16px; }
+.today-date { font-size: 14px; color: #b08888; font-weight: 500; }
+
+/* ====== Kiss Cards ====== */
+.kiss-cards { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+.kiss-card {
+  background: #fff; border-radius: 20px; padding: 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05); transition: all 0.3s;
+}
+.kiss-card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.kiss-period-icon { font-size: 24px; }
+.kiss-period-label { font-size: 18px; font-weight: 600; color: #3d2c2c; }
+.kiss-card-status { display: flex; gap: 24px; margin-bottom: 12px; }
+.partner-status { display: flex; align-items: center; gap: 8px; }
+.status-label { font-size: 14px; color: #b08888; }
+.status-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #f0e0e0; transition: all 0.3s;
+}
+.status-dot.sent { background: #e2556d; box-shadow: 0 0 8px rgba(226,85,109,0.3); }
+
+/* ====== Big Kiss Button ====== */
+.btn-kiss {
+  display: block; width: 100%;
+  padding: 8px; border: none; border-radius: 16px;
+  font-size: 40px; line-height: 1; cursor: pointer;
+  transition: all 0.25s;
+  background: linear-gradient(135deg, #fce4e8, #fff0f2);
+  color: #e2556d;
+}
+.btn-kiss:hover {
+  background: linear-gradient(135deg, #f8d0d8, #fce4e8);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(226,85,109,0.2);
+}
+.btn-kiss:active { transform: translateY(0); }
+.btn-kiss:disabled {
+  opacity: 0.35; cursor: not-allowed;
+  transform: none; box-shadow: none;
+}
+.btn-kiss.sent-btn {
+  background: linear-gradient(135deg, #f0e0e0, #f8e8e8);
+  color: #d4b0b0;
+}
+
+@keyframes kissPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+.kiss-card.kissed .btn-kiss { animation: kissPulse 0.4s ease; }
+
+.kiss-time { text-align: center; margin-top: 6px; font-size: 12px; color: #d4b0b0; min-height: 18px; }
+
+/* ====== Nav Tabs ====== */
+.nav-tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+.tab {
+  flex: 1; padding: 10px; border: none; border-radius: 12px;
+  font-size: 14px; font-weight: 500; cursor: pointer;
+  transition: all 0.2s;
+  background: #f0e0e0; color: #b08888;
+}
+.tab.active { background: #e2556d; color: #fff; }
+.tab:hover:not(.active) { background: #e8d0d0; }
+
+/* ====== History View ====== */
+.history-view {
+  background: #fff; border-radius: 20px; padding: 20px 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  margin-bottom: 80px; min-height: 200px;
+}
+
+/* ====== Today View (Detailed Status) ====== */
+.today-detail { display: flex; flex-direction: column; gap: 16px; }
+.today-block { }
+.today-block-title { font-size: 14px; font-weight: 600; color: #3d2c2c; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.today-block-title .icon { font-size: 18px; }
+.today-row { display: flex; gap: 24px; }
+.today-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #b08888; }
+.today-item .name { font-weight: 600; color: #3d2c2c; }
+.today-item .status { font-weight: 600; }
+.today-item .status.sent { color: #e2556d; }
+.today-item .status.miss { color: #c4a0a0; }
+.today-item .time { font-size: 12px; color: #c4a0a0; }
+
+/* ====== Week View ====== */
+.week-grid { display: flex; flex-direction: column; gap: 12px; }
+.week-day {
+  display: flex; align-items: center;
+  padding: 10px 12px; border-radius: 12px;
+  background: #fef6f6; transition: all 0.15s;
+}
+.week-day.today { background: #fff5f5; border: 1px solid #fce4e8; }
+.week-day-date {
+  width: 42px; font-size: 14px; font-weight: 600;
+  color: #3d2c2c; text-align: center;
+}
+.week-day-label { width: 32px; font-size: 12px; color: #b08888; }
+.week-day-kisses { flex: 1; display: flex; flex-direction: column; gap: 4px; align-items: center; }
+.week-kiss-row { display: flex; gap: 16px; align-items: center; }
+.week-kiss-row .period-icon { font-size: 14px; width: 20px; text-align: center; }
+.week-kiss-pair { display: flex; gap: 8px; }
+.week-lip {
+  font-size: 20px;
+  filter: grayscale(100%) opacity(0.35);
+  -webkit-filter: grayscale(100%) opacity(0.35);
+  transition: all 0.2s;
+}
+.week-lip.sent {
+  filter: none;
+  -webkit-filter: none;
+}
+
+/* ====== Month View ====== */
+.month-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.month-header h3 { font-size: 16px; color: #3d2c2c; }
+.month-nav { background: none; border: none; font-size: 18px; cursor: pointer; color: #c4a0a0; padding: 4px 8px; border-radius: 8px; transition: all 0.15s; }
+.month-nav:hover { background: #f0e0e0; color: #e2556d; }
+.month-weekdays {
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  gap: 4px; margin-bottom: 8px;
+  text-align: center; font-size: 12px; color: #c4a0a0; font-weight: 500;
+}
+.month-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.month-day {
+  aspect-ratio: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  border-radius: 10px; font-size: 13px; color: #b08888;
+  background: #faf0f0; gap: 1px; cursor: pointer;
+  transition: all 0.15s;
+}
+.month-day:hover { background: #f0e0e0; }
+.month-day.today { background: #fff0f2; border: 1px solid #e2556d; font-weight: 600; }
+.month-day .day-icon { font-size: 14px; }
+.month-day.other-month { opacity: 0.2; }
+
+/* ====== Day Detail Modal ====== */
+.day-detail-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.3); z-index: 100;
+  justify-content: center; align-items: center; padding: 20px;
+}
+.day-detail-overlay.active { display: flex; }
+.day-detail-box {
+  background: #fff; border-radius: 24px; padding: 32px 24px;
+  width: 100%; max-width: 360px; text-align: center;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+.day-detail-box h3 { font-size: 20px; color: #e2556d; margin-bottom: 4px; }
+.day-detail-box .detail-date { font-size: 14px; color: #b08888; margin-bottom: 16px; }
+.detail-period-block { margin: 12px 0; }
+.detail-period-title { font-size: 14px; color: #3d2c2c; margin-bottom: 8px; font-weight: 600; }
+.detail-kiss-row { display: flex; justify-content: center; gap: 32px; }
+.detail-kiss-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.detail-kiss-item .name { font-size: 13px; color: #b08888; font-weight: 600; }
+.detail-kiss-item .lip { font-size: 28px; }
+.detail-kiss-item .lip.sent { color: #e2556d; }
+.detail-kiss-item .lip.miss {
+  filter: grayscale(100%) opacity(0.35);
+  -webkit-filter: grayscale(100%) opacity(0.35);
+}
+.detail-kiss-item .lip-time { font-size: 11px; color: #c4a0a0; }
+.day-detail-close {
+  margin-top: 20px; padding: 10px 32px;
+  border: none; border-radius: 12px;
+  background: #f0e0e0; color: #b08888; font-size: 14px; cursor: pointer;
+}
+.day-detail-close:hover { background: #e8d0d0; }
+
+/* ====== Toast ====== */
+.toast {
+  position: fixed; bottom: 24px; left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: #3d2c2c; color: #fff;
+  padding: 14px 24px; border-radius: 14px;
+  font-size: 14px; opacity: 0; transition: all 0.3s;
+  z-index: 200; white-space: nowrap; max-width: 90vw; text-align: center;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ====== Today View - Lip Style (matches modal) ====== */
+.today-detail-block { margin: 8px 0; }
+.today-detail-title { font-size: 14px; color: #3d2c2c; font-weight: 600; margin-bottom: 8px; }
+.today-detail-title .td-icon { font-size: 18px; }
+.today-kiss-row { display: flex; gap: 32px; justify-content: center; }
+.today-kiss-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.today-kiss-item .name { font-size: 13px; color: #b08888; font-weight: 600; }
+.today-kiss-item .lip { font-size: 28px; }
+.today-kiss-item .lip.sent { color: #e2556d; }
+.today-kiss-item .lip.miss {
+  filter: grayscale(100%) opacity(0.35);
+  -webkit-filter: grayscale(100%) opacity(0.35);
+}
+.today-kiss-item .lip-time { font-size: 11px; color: #c4a0a0; }
+
+/* ====== Future dates (no interaction) ====== */
+.month-day.future {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.3;
+}

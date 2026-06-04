@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>💋 Kiss - 早安晚安吻</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="login-screen" class="screen active">
+  <div class="login-box">
+    <div class="login-emoji">💋</div>
+    <h1>Kiss</h1>
+    <p class="login-subtitle">给异地恋人的早安晚安吻</p>
+    <div class="login-buttons">
+      <button class="btn-partner" onclick="selectPartner('partner1')">
+        <span class="partner-icon">🧑</span>
+        <span class="partner-label">大宝</span>
+        <span class="partner-role">大宝送出的吻</span>
+      </button>
+      <button class="btn-partner" onclick="selectPartner('partner2')">
+        <span class="partner-icon">👩</span>
+        <span class="partner-label">小宝</span>
+        <span class="partner-role">小宝送出的吻</span>
+      </button>
+    </div>
+    <p class="login-hint">选择你是谁就可以开始啦 💕</p>
+  </div>
+</div>
+
+<div id="main-screen" class="screen">
+  <header>
+    <div class="header-left">
+      <span id="display-name" class="display-name">我</span>
+      <span class="header-subtitle">的 Kiss</span>
+    </div>
+    <div class="header-right">
+      <button class="btn-icon" onclick="switchPartner()" title="切换身份">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="today-banner">
+    <span id="today-display" class="today-date"></span>
+  </div>
+
+  <div class="kiss-cards">
+    <div class="kiss-card" id="morning-card">
+      <div class="kiss-card-header">
+        <span class="kiss-period-icon">⏰</span>
+        <span class="kiss-period-label">早安吻</span>
+      </div>
+      <div class="kiss-card-status">
+        <div class="partner-status" id="morning-us">
+          <span class="status-label">大宝</span>
+          <span class="status-dot" id="morning-us-dot"></span>
+        </div>
+        <div class="partner-status" id="morning-them">
+          <span class="status-label">小宝</span>
+          <span class="status-dot" id="morning-them-dot"></span>
+        </div>
+      </div>
+      <button class="btn-kiss" id="morning-send" onclick="sendKiss('morning')">💋</button>
+      <div class="kiss-time" id="morning-time"></div>
+    </div>
+
+    <div class="kiss-card" id="night-card">
+      <div class="kiss-card-header">
+        <span class="kiss-period-icon">🌙</span>
+        <span class="kiss-period-label">晚安吻</span>
+      </div>
+      <div class="kiss-card-status">
+        <div class="partner-status" id="night-us">
+          <span class="status-label">大宝</span>
+          <span class="status-dot" id="night-us-dot"></span>
+        </div>
+        <div class="partner-status" id="night-them">
+          <span class="status-label">小宝</span>
+          <span class="status-dot" id="night-them-dot"></span>
+        </div>
+      </div>
+      <button class="btn-kiss" id="night-send" onclick="sendKiss('night')">💋</button>
+      <div class="kiss-time" id="night-time"></div>
+    </div>
+  </div>
+
+  <div class="nav-tabs">
+    <button class="tab active" data-tab="today" onclick="switchTab('today')">今天</button>
+    <button class="tab" data-tab="week" onclick="switchTab('week')">本周</button>
+    <button class="tab" data-tab="month" onclick="switchTab('month')">本月</button>
+  </div>
+
+  <div id="history-view" class="history-view"></div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

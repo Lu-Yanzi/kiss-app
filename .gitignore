@@ -1,0 +1,9 @@
+
+# macOS
+*.bak
+.DS_Store
+.env
+kiss.db
+kiss.db-shm
+kiss.db-wal
+node_modules/
