@@ -1,4 +1,5 @@
 const express = require('express');
+const fs = require('fs');
 const Database = require('better-sqlite3');
 const path = require('path');
 
@@ -131,6 +132,42 @@ app.get('/api/kiss/stats', (req, res) => {
   ).all(monthStr, todayStr);
 
   res.json({ week: weekKisses, month: monthKisses });
+});
+
+// fallback：所有未匹配路由返回 index.html（SPA 支持）
+const PUBLIC_DIR = path.join(__dirname, 'public');
+
+// 根路径 - 明确路由
+app.get('/', (req, res) => {
+  res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
+});
+
+// 静态文件服务
+app.get('/*.css', (req, res) => {
+  const filePath = path.join(PUBLIC_DIR, req.path);
+  if (fs.existsSync(filePath)) {
+    res.type('text/css').sendFile(filePath);
+  } else {
+    res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
+  }
+});
+
+app.get('/*.js', (req, res) => {
+  const filePath = path.join(PUBLIC_DIR, req.path);
+  if (fs.existsSync(filePath)) {
+    res.type('application/javascript').sendFile(filePath);
+  } else {
+    res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
+  }
+});
+
+app.get('/*.png', (req, res) => {
+  const filePath = path.join(PUBLIC_DIR, req.path);
+  if (fs.existsSync(filePath)) {
+    res.sendFile(filePath);
+  } else {
+    res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
+  }
 });
 
 // fallback：所有未匹配路由返回 index.html（SPA 支持）
